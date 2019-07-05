@@ -18,7 +18,7 @@
 #>
 <# 
     .DESCRIPTION 
-        Downloads and installs the OneDrive Sync client preview version and installs the OneDrive client per-machine.
+        Downloads and installs the OneDrive Sync client and installs the OneDrive client per-machine.
 
     .LINK
         https://docs.microsoft.com/en-us/onedrive/per-machine-installation
@@ -27,7 +27,7 @@
 Param (
     [Parameter()]
     [string] $OneDriveUri = "https://go.microsoft.com/fwlink/?linkid=2083517",
-    # URI to the preview OneDrive client
+    # URI to the OneDrive client
 
     [Parameter()]
     [string] $OneDriveSetup = $(Join-Path "$env:Temp" "OneDriveSetup.exe"),
@@ -35,7 +35,7 @@ Param (
 
     [Parameter()]
     [switch] $Force = [switch]::Present
-    # Force install of the preview client even if the installed client is higher.
+    # Force install of the client even if the installed client is higher.
 )
 
 #region Functions
@@ -210,7 +210,7 @@ Start-Transcript -Path $logFile
 $VerbosePreference = "Continue"
 
 # Download and install the OneDrive sync client
-Write-Warning "This script downloads and installs a preview version of the OneDrive sync client."
+Write-Warning "This script downloads and installs the OneDrive sync client."
 try {
     $downloadStatus = $True
     Write-Verbose -Message "Downloading to $OneDriveSetup"
